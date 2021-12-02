@@ -11,7 +11,7 @@ const MenuItem = ({ title, imageUrl, size, link }) => {
     //added dynamic size to class name to be able to change size of specific menu-items according to placement
     //using inline style to dynamically set background image of each item. image is is separate div for size hover effect so container maintains size
     return (
-        <div className={`${size} menu-item`} onClick={() => {navigate(`/${link}`)}}>
+        <div className={`${size} menu-item`} onClick={() => {navigate(`${link}`)}}>
             <div
                 className='background-image'
                 style={{

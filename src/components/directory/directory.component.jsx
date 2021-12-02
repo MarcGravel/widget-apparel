@@ -50,8 +50,9 @@ class Directory extends React.Component {
             <div className='directory-menu'>
                 {
                     //iterating through sections and passing values as props to menu item component
-                    this.state.sections.map(({title, imageUrl, id, size, link}) => (
-                        <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} link={link}/>
+                    // the ellipses variable is equivalent to just destructuring the props where key and value names match.
+                    this.state.sections.map(({id, ...otherSectionsProps}) => (
+                        <MenuItem key={id} {...otherSectionsProps}/>
                     ))
                 }
             </div>
