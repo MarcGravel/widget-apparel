@@ -18,9 +18,9 @@ const SHOP_DATA = [
         },
         {
             id: 3,
-            name: 'Sun Hat',
-            imageUrl: "https://images.unsplash.com/photo-1603712724589-9105d18d2d77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-            price: 30
+            name: 'Black Bucket Hat',
+            imageUrl: "https://images.unsplash.com/photo-1600725388723-0fac4b3430ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTV8fGhhdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+            price: 24
         },
         {
             id: 4,
@@ -30,9 +30,9 @@ const SHOP_DATA = [
         },
         {
             id: 5,
-            name: 'Black Bucket Hat',
-            imageUrl: "https://images.unsplash.com/photo-1600725388723-0fac4b3430ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTV8fGhhdHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-            price: 24
+            name: 'Sun Hat',
+            imageUrl: "https://images.unsplash.com/photo-1603712724589-9105d18d2d77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+            price: 30
         },
         {
             id: 6,
