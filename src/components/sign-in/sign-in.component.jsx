@@ -2,6 +2,7 @@ import React from 'react';
 import './sign-in.styles.scss';
 import FormInput from '../form-input/form-input.component';
 import SiteButton from '../site-button/site-button.component';
+import { signInWithGoogle } from '../../firebase/firebase.utils';
 
 //using class due to using state to store data
 class SignIn extends React.Component {
@@ -37,6 +38,7 @@ class SignIn extends React.Component {
                     <FormInput name='email' type='email' value={this.state.email} label='Email' handleChange={this.handleChange} required />
                     <FormInput name='password' type='password' value={this.state.password} label='Password' handleChange={this.handleChange} required />
                     <SiteButton type='submit'>Sign in</SiteButton>
+                    <SiteButton onClick={signInWithGoogle}>Sign in with Google</SiteButton>
                 </form>
             </div>
         )

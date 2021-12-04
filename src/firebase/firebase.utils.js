@@ -2,9 +2,9 @@
 //connects to the application. This is perfectly safe, and the intended purpose of this public API key. 
 //GitGuardian has acknowledged that this is not an issue.
 
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
 
 const config = {
     apiKey: "AIzaSyAORoHgJRHmUUVXPPLud-Q9Rxa9nONylTI",
@@ -29,7 +29,7 @@ export const firestore = firebase.firestore();
 const provider = new firebase.auth.GoogleAuthProvider();
 
 //trigger google select acount pop up whenever GoogleAuthProvider is used
-provider.setCustomParameters({ promp: 'select_account' });
+provider.setCustomParameters({ prompt: 'select_account' });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
