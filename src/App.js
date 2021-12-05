@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   unsubscribeFromAuth = null
-  
+
   //fetches auth data from firebase on mount
   componentDidMount() {
     //inside onAuthStateChanged takes a function where parameter is what user state is of auth. callback sets state to that user object
@@ -38,7 +38,7 @@ class App extends React.Component {
       //Routes component ensures that once a route finds a path match, it does not render anything else but that route 
       <div>
         <Router>
-          <Header />
+          <Header currentUser={this.state.currentUser} />
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/shop' element={<ShopPage />} />
