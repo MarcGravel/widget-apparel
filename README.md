@@ -8,7 +8,8 @@ This project is built to take a deep dive into [React](https://reactjs.org/) and
 ### What else other than React?
 
 1- Since the project is focused on learning React, [Firebase](https://firebase.google.com/) was used
-for backend and database handling to keep focus on React fundamentals.  
+for backend and database handling to keep focus on React fundamentals. [Firebase](https://firebase.google.com/)
+also allows for simple OAuth implementation. 
 
 
 ...
