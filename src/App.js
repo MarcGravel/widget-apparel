@@ -5,7 +5,7 @@ import ShopPage from './pages/shoppage/shoppage.component';
 import Header from './components/header/header.component';
 import SignInUpPage from './pages/sign-in-up-page/sign-in-up-page.component';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { auth } from './firebase/firebase.utils';
+import { auth,createUserProfileDocument } from './firebase/firebase.utils';
 
 class App extends React.Component {
   constructor() {
@@ -21,11 +21,29 @@ class App extends React.Component {
 
   //fetches auth data from firebase on mount
   componentDidMount() {
-    //inside onAuthStateChanged takes a function where parameter is what user state is of auth. callback sets state to that user object
-    //firebase keeps state persistent by default. keeps user signed in on brower close
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({currentUser: user});
-    })
+    //inside onAuthStateChanged takes a function where parameter is what user state is of auth. callback function queries DB, and accepts login if data exists
+    //firebase keeps state persistent by default. keeps user signed in on browser close
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+
+      //if userAuth exists
+      if(userAuth) {
+        //google auth check - checks if user exists on google sign in. if not, creates user and stores in db
+        const userRef = await createUserProfileDocument(userAuth);
+
+        //if user exists in db, get snapshot of data and set state
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          })
+        });
+      }
+      
+      //if userAuth is null, set state of current user to null (not logged in)
+      this.setState({currentUser: userAuth });
+    });
   }
 
   //closes auth subscription when component unmounts to avoid memory leakage

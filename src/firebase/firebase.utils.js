@@ -16,6 +16,41 @@ const config = {
     measurementId: "G-H20Q6VRE61"
 };
 
+//take user auth object from google auth and query db for data exists
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+    //if userAuth doesnt exist
+    if (!userAuth) {
+        return;
+    }
+
+    //query documentRef
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
+    //query snapshot (snapshot represents data only, cannot modify. use documentRef to modify data)
+    const snapShot = await userRef.get();
+
+    //if snapshot doesnt exist, create new user
+    if(!snapShot.exists) {
+        //grabs data from google user auth sign in object 
+        const { displayName, email } = userAuth;
+        //create date object when document was created
+        const createdAt = new Date();
+
+        // async request to db to store data of user
+        try {
+            await userRef.set({
+                displayName,
+                email,
+                createdAt,
+                ...additionalData
+            })
+        } catch (error) {
+            console.log("error creating user", error.message);
+        }
+    }
+
+    return userRef;
+}
+
 //sets config object created above
 firebase.initializeApp(config);
 
