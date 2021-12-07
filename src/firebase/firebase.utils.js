@@ -18,24 +18,24 @@ const config = {
 
 //take user auth object from google auth and query db for data exists
 export const createUserProfileDocument = async (userAuth, additionalData) => {
-    //if userAuth doesnt exist
+    //if userAuth doesnt exist (nothing is passed)
     if (!userAuth) {
         return;
     }
 
-    //query documentRef
+    //query documentRef to check if userAuth's id exists in Db yet
     const userRef = firestore.doc(`users/${userAuth.uid}`);
     //query snapshot (snapshot represents data only, cannot modify. use documentRef to modify data)
     const snapShot = await userRef.get();
 
-    //if snapshot doesnt exist, create new user
+    //if snapshot doesnt exist then no user with that id exists in db. so create new user
     if(!snapShot.exists) {
-        //grabs data from google user auth sign in object 
+        //grabs data from google userauth sign in object 
         const { displayName, email } = userAuth;
         //create date object when document was created
         const createdAt = new Date();
 
-        // async request to db to store data of user
+        //async request to db to store data of user into db
         try {
             await userRef.set({
                 displayName,
@@ -47,7 +47,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
             console.log("error creating user", error.message);
         }
     }
-
+    //returns the userRef object from db data
     return userRef;
 }
 

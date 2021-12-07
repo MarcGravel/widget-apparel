@@ -27,22 +27,23 @@ class App extends React.Component {
 
       //if userAuth exists
       if(userAuth) {
-        //google auth check - checks if user exists on google sign in. if not, creates user and stores in db
+        //google auth check - checks if user exists in db on google sign in. if not, creates user, stores in db and returns the data
         const userRef = await createUserProfileDocument(userAuth);
 
-        //if user exists in db, get snapshot of data and set state
+        //Once user exists in db, get snapshot of data and set state
         userRef.onSnapshot(snapShot => {
           this.setState({
             currentUser: {
               id: snapShot.id,
               ...snapShot.data()
             }
-          })
+          });
         });
       }
-      
-      //if userAuth is null, set state of current user to null (not logged in)
-      this.setState({currentUser: userAuth });
+      else {
+        //if userAuth is null, set state of currentUser to null (not logged in or user logs out)
+        this.setState({currentUser: userAuth });
+      }
     });
   }
 
