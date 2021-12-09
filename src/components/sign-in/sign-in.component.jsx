@@ -2,7 +2,7 @@ import React from 'react';
 import './sign-in.styles.scss';
 import FormInput from '../form-input/form-input.component';
 import SiteButton from '../site-button/site-button.component';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
 //using class due to using state to store data
 class SignIn extends React.Component {
@@ -17,9 +17,19 @@ class SignIn extends React.Component {
 
     //triggers the submission to DB at button click
     //also clears input fields when triggered. 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault();
-        this.setState({ email: '', password: '' })
+
+        const { email, password } = this.state;
+        
+        //check if email and password exists in db and match. if success clear state.
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({ email: '', password: '' });
+
+        } catch(error) {
+            console.log(error);
+        }
     }
 
     //sets state to current form values in real time. 
