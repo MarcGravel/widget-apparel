@@ -49,7 +49,7 @@ class SignIn extends React.Component {
                     <FormInput name='password' type='password' value={this.state.password} label='Password' handleChange={this.handleChange} required />
                     <div className='buttons'>
                         <SiteButton type='submit'>Sign in</SiteButton>
-                        <SiteButton onClick={signInWithGoogle} isGoogleSignIn>Sign in with Google</SiteButton>
+                        <SiteButton type='button' onClick={signInWithGoogle} isGoogleSignIn>Sign in with Google</SiteButton>
                     </div>
                 </form>
             </div>
