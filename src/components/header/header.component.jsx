@@ -3,6 +3,7 @@ import './header.styles.scss';
 import { Link } from 'react-router-dom';
 import Logo from '../../images/gearLogo.png';
 import { auth } from '../../firebase/firebase.utils';
+import { connect } from 'react-redux';
 
 const Header = ({ currentUser }) => (
     <div className='header'>
@@ -21,4 +22,10 @@ const Header = ({ currentUser }) => (
     </div>
 );
 
-export default Header;
+//connect state/store to header component to grab values. state object here is the root reducer
+const mapStateToProps = state => ({
+    currentUser: state.user.currentUser
+})
+
+//use connect to connect the state/store to header
+export default connect(mapStateToProps)(Header);

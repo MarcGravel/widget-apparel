@@ -11,7 +11,10 @@ This project is built to take a deep dive into [React](https://reactjs.org/) and
 
 Since the project is focused on learning React,Firebase was used
 for backend and database handling to keep focus on React fundamentals. Firebase
-also allows for simple OAuth implementation. 
+also allows for simple OAuth implementation for the e-store. 
 
+### [Redux](https://redux.js.org/)
+
+Using Redux library to manage and centralize the applications state.
 
 ...
