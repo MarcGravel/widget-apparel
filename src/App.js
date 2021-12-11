@@ -66,7 +66,6 @@ class App extends React.Component {
 
 //rediret away from sign in page if user signed in
 const SignInWrapper = ({ children, currentUser }) => {
-  console.log(currentUser);
   return currentUser ? <Navigate to="/" replace /> : children;
 };
 
