@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import Logo from '../../images/gearLogo.png';
 import { auth } from '../../firebase/firebase.utils';
 import { connect } from 'react-redux';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-const Header = ({ currentUser }) => (
+const Header = ({ currentUser, hidden }) => (
     <div className='header'>
         <Link className='logo-container' to="/"><img id='header-logo' src={Logo} alt="Logo" /></Link>
         <div className='options-container'>
@@ -18,13 +20,18 @@ const Header = ({ currentUser }) => (
                 :
                 <Link className='option' to='/signin'>SIGN IN</Link>
             }
+            <CartIcon />
         </div>
+        {
+            hidden ? null : <CartDropdown />
+        }
     </div>
 );
 
-//connect state/store to header component to grab values. state object here is the root reducer
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
+//connect state/store to header component to grab values.
+const mapStateToProps = ({user: { currentUser}, cart: { hidden }}) => ({
+    currentUser,
+    hidden
 })
 
 //use connect to connect the state/store to header
