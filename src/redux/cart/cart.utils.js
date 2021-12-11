@@ -1,6 +1,6 @@
 export const addItemToCart = (cartItems, itemToAdd) => {
     //check to see if any existing cart items have matching id to added item 
-    const existingCartItem = cartItems.find(cartItem => cartItems.id === itemToAdd.id);
+    const existingCartItem = cartItems.find(cartItem => cartItem.id === itemToAdd.id);
 
     //if match
     if (existingCartItem) {
