@@ -13,6 +13,24 @@ export const addItemToCart = (cartItems, itemToAdd) => {
                 : cartItem
             )
     }
-    
+    //if no match, just add item with quantity of 1
     return [...cartItems, {...itemToAdd, quantity: 1}];
+}
+
+export const removeItemFromCart = (cartItems, itemToRemove) => {
+    const existingCartItem = cartItems.find(cartItem => cartItem.id === itemToRemove.id);
+
+    //if there is only 1 of this type of item in the cart, remove the item completely from cart
+    if (existingCartItem.quantity === 1) {
+        return cartItems.filter(cartItem => cartItem.id !== itemToRemove.id)
+    }
+    //if there is more than 1 of this item, decrease item quantity count by 1
+    else {
+        return cartItems.map(cartItem => 
+            cartItem.id === itemToRemove.id
+                ? {...cartItem, quantity: cartItem.quantity - 1}
+                : cartItem
+            )
+    }
+
 }
