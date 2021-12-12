@@ -79,7 +79,7 @@ const mapStateToProps = (state) => ({
 
 //function that gets dispatch property and dispatches new action to be passed
 const mapDispatchToProps = dispatch => ({
-  //gets user object and dispatch will pass to the reducers
+  //gets user object and dispatch will pass to the reducer to store currentuser in state
   setCurrentUser: user => dispatch(setCurrentUser(user))
 })
 
