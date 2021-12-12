@@ -18,6 +18,12 @@
         overflow-y: auto;
     }
 
+    .empty-message {
+        display: flex;
+        justify-content: center;
+        margin-top: 50%;
+    }
+
     button {
         margin-top: auto;
     }
