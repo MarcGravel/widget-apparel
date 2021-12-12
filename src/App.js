@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selectors'
 
 class App extends React.Component {
 
@@ -69,9 +70,9 @@ const SignInWrapper = ({ children, currentUser }) => {
   return currentUser ? <Navigate to="/" replace /> : children;
 };
 
-//connect store to component to grab values.
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+//connect store to component to grab values. using selector
+const mapStateToProps = (state) => ({
+  currentUser: selectCurrentUser(state)
 })
 
 //function that gets dispatch property and dispatches new action to be passed

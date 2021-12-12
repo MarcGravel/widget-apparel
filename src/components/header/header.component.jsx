@@ -6,6 +6,8 @@ import { auth } from '../../firebase/firebase.utils';
 import { connect } from 'react-redux';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 const Header = ({ currentUser, hidden }) => (
     <div className='header'>
@@ -28,10 +30,11 @@ const Header = ({ currentUser, hidden }) => (
     </div>
 );
 
-//connect state/store to header component to grab values.
-const mapStateToProps = ({user: { currentUser}, cart: { hidden }}) => ({
-    currentUser,
-    hidden
+//connect state/store to header component to grab values. passes state to respective selectors to return proper state values.
+//selector used to avoid rerender on component if specific state of component does not change on any state change
+const mapStateToProps = (state) => ({
+    currentUser: selectCurrentUser(state),
+    hidden: selectCartHidden(state)
 })
 
 //use connect to connect the state/store to header
