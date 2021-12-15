@@ -42,8 +42,8 @@ const SHOP_DATA = [
         },
         {
             id: 12,
-            name: 'Brown Brim',
-            imageUrl: "https://images.unsplash.com/photo-1542728034-9f9781a0b9e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTU4fHxoYXRzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+            name: 'Grey Cowboy',
+            imageUrl: "https://images.unsplash.com/photo-1486645725491-57c86b563b91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
             price: 30
         },
         {
