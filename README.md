@@ -17,4 +17,10 @@ also allows for simple OAuth implementation for the e-store.
 
 Using Redux library to manage and centralize the applications state.
 
+### [Stripe](https://stripe.com/)
+
+Stripe integration to handle credit card payments. This is a mock website that does not 
+sell real products so the stripe integration does not take real payments.
+Will possibly build small backend to handle "real" payment requests in the future, but will still not accept real payments.
+
 ...

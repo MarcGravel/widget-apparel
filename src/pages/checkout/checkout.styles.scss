@@ -27,5 +27,15 @@
         margin-top: 30px;
         margin-left: auto;
         font-size: 36px;
+
+        .prices {
+            display: flex;
+            flex-direction: row;
+            justify-content: end;
+        }
+
+        .small-price {
+            font-size: 0.7em;
+        }
     }
 }
