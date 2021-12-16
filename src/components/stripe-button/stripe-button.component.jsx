@@ -22,7 +22,7 @@ const StripeCheckoutBtn = ({ price }) => {
             billingAddress
             shippingAddress
             image={GearLogo}
-            description={`Your total is $${price}`}
+            description={`Your total is $${price}CAD`}
             amount={priceInCents}
             panelLabel='Pay Now'
             token={onSuccess}
