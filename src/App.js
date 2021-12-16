@@ -8,8 +8,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
-import { selectCurrentUser } from './redux/user/user.selectors'
+import { selectCurrentUser } from './redux/user/user.selectors';
 import CheckoutPage from './pages/checkout/checkout.component';
+import Footer from './components/footer/footer.component';
 
 class App extends React.Component {
 
@@ -61,6 +62,7 @@ class App extends React.Component {
             <Route path='/signin' element={<SignInWrapper currentUser={this.props.currentUser}><SignInUpPage /></SignInWrapper>} />
             <Route path='/checkout' element={<CheckoutPage />} />
           </Routes>
+          <Footer/>
         </Router>
       </div>
     );
