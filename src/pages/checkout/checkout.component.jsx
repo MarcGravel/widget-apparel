@@ -40,6 +40,11 @@ const CheckoutPage = ({ cartItems, total }) => {
                 <span className="prices small-price">Tax: ${tax}</span>
                 <span className='prices'>Total: ${finalPrice}</span>
             </div>
+            <div className='test-warning'>
+                *Please use the following test credit card for payment*
+                <br/>
+                CC: 4242 4242 4242 4242 - Exp: 01/24 - CVV: 123
+            </div>
             <StripeCheckoutBtn price={finalPrice}/>
         </div>
 )}
